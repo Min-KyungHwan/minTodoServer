@@ -19,7 +19,7 @@ public class WorkInfoController {
 
     @RequestMapping(value="/getWorkInfo", produces = "application/json", method= RequestMethod.GET)
     public WorkInfoVO getWorkInfo() throws Exception{
-//        return "Hello, Spring!";
-        return workInfoService.getWorkInfo();
+        WorkInfoVO param = new WorkInfoVO();
+        return workInfoService.getWorkInfo(param);
     }
 }

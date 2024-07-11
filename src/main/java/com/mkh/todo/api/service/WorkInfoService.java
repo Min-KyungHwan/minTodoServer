@@ -7,5 +7,5 @@ import com.mkh.todo.api.vo.WorkInfoVO;
  */
 
 public interface WorkInfoService {
-    WorkInfoVO getWorkInfo() throws Exception;
+    WorkInfoVO getWorkInfo(WorkInfoVO param) throws Exception;
 }

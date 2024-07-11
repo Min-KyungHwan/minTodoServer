@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "WEB-INF/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mkh.todo.api.mapper.UserMapper">
+    <select id="getUser" resultType="com.mkh.todo.api.vo.UserVO">
+        SELECT
+            USER_SEQ as userSeq,
+            USER_ID as userId ,
+            USER_PW as userPw,
+            LOGIN_FAIL_CNT as loginFailCnt,
+            LAST_LOGIN_DT as lastLoginDt,
+            LAST_LOGIN_IP as lastLoginIp,
+            PW_MOD_DT as pwModDt,
+            PW_STAY_CNT as pwStayCnt,
+            LAST_ACT_DT as lastActDt,
+            USE_YN as useYn,
+            MOD_DT as modDt,
+            MOD_ID as modId,
+            REG_DT as regDt,
+            REG_ID as regId
+        FROM user limit 1
+    </select>
+    <update id="setUser" parameterType="com.mkh.todo.api.vo.UserVO">
+        UPDATE user
+        SET MOD_DT = now(),
+            USER_ID = #{userId},
+            USER_PW = #{userPw},
+            LOGIN_FAIL_CNT = #{loginFailCnt},
+            LAST_LOGIN_DT = #{lastLoginDt},
+            LAST_LOGIN_IP = #{lastLoginIp},
+            PW_MOD_DT = #{pwModDt},
+            PW_STAY_CNT = #{pwStayCnt},
+            LAST_ACT_DT = #{lastActDt},
+            USE_YN = #{useYn},
+            MOD_ID = #{modId}
+        WHERE USER_SEQ = #{userSeq}
+    </update>
+    <insert id="addUser" parameterType="com.mkh.todo.api.vo.UserVO">
+        INSERT INTO user (USER_ID, USER_PW, LOGIN_FAIL_CNT, LAST_LOGIN_DT, LAST_LOGIN_IP, PW_MOD_DT, PW_STAY_CNT, LAST_ACT_DT, USE_YN, REG_DT, REG_ID)
+        VALUE (#{userId}, #{userPw}, #{loginFailCnt}, #{lastLoginDt}, #{lastLoginIp}, #{pwModDt}, #{pwStayCnt}, #{lastActDt}, #{useyn}, now(), #{regId})
+    </insert>
+</mapper>

@@ -12,21 +12,23 @@
             MOD_ID as modId,
             REG_DT as regDt,
             REG_ID as regId 
-        FROM WORK_INFO
+        FROM work_info
         limit 1
     </select>
-    
-<!--    <update id="setWorkInfo" parameterType="com.mkh.todo.api.vo.WorkInfoVO" resultType="int">-->
-<!--        update WORK_INFO-->
-<!--        set MOD_DT = now(),-->
-<!--            USER_SEQ = #{userSeq},-->
-<!--            WORK_INFO = #{workInfo},-->
-<!--            MOD_ID = {modId}-->
-<!--        where WORK_INFO_SEQ = #{workInfoSeq}-->
-<!--    </update>-->
-<!--    -->
-<!--    <insert id="addWorkInfo"  parameterType="com.mkh.todo.api.vo.WorkInfoVO" resultType="int">-->
-<!--        insert into WORK_INFO (USER_SEQ, WORK_INFO, REG_DT, REG_ID )-->
-<!--        value (#{userSeq}, #{workInfo}, now(), #{reg_id})-->
-<!--    </insert>-->
+
+    <!-- 일과 수정 -->
+    <update id="setWorkInfo" parameterType="com.mkh.todo.api.vo.WorkInfoVO">
+        UPDATE work_info
+        SET MOD_DT = now(),
+            USER_SEQ = #{userSeq},
+            WORK_INFO = #{workInfo},
+            MOD_ID = {modId}
+        WHERE WORK_INFO_SEQ = #{workInfoSeq}
+    </update>
+
+    <!-- 일과 등록 -->
+    <insert id="addWorkInfo"  parameterType="com.mkh.todo.api.vo.WorkInfoVO">
+        INSERT INTO work_info (USER_SEQ, WORK_INFO, REG_DT, REG_ID )
+        VALUE (#{userSeq}, #{workInfo}, now(), #{reg_id})
+    </insert>
 </mapper>

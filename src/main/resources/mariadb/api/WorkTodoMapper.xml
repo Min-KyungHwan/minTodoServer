@@ -1,0 +1,37 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "WEB-INF/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mkh.todo.api.mapper.WorkTodoMapper">
+
+    <!-- 할일 상세 -->
+    <select id="getWorkTodo" resultType="com.mkh.todo.api.vo.WorkTodoVO">
+        SELECT
+            WORK_INFO_SEQ as workInfoSeq,
+            USER_SEQ as userSeq,
+            SORT_NO as sortNo,
+            TODO_NM as todoNm,
+            STATUS as status,
+            MOD_DT as modDt,
+            MOD_ID as modId,
+            REG_DT as regDt,
+            REG_ID as regId
+        FROM work_todo
+        limit 1
+    </select>
+
+    <!-- 할일 수정 -->
+    <update id="setWorkTodo" parameterType="com.mkh.todo.api.vo.WorkTodoVO">
+        UPDATE work_todo
+        SET MOD_DT = now(),
+            USER_SEQ = #{userSeq},
+            SORT_NO = #{sortNo},
+            TODO_NM = #{todoNm},
+            STATUS = #{status},
+            MOD_ID = #{modId}
+        WHERE WORK_INFO_SEQ = #{workinfoseq}
+    </update>
+
+    <!-- 할일 등록 -->
+    <insert id="addWorkTodo" parameterType="com.mkh.todo.api.vo.WorkTodoVO">
+        INSERT INTO work_todo (WORK_INFO_SEQ, USER_SEQ, SORT_NO, TODO_NM, STATUS, REG_DT, REG_ID)
+        VALUE (#{workInfo_seq}, #{userSeq}, #{sortNo}, #{todoNm}, #{status}, now(), #{reg_id})
+    </insert>
+</mapper>
