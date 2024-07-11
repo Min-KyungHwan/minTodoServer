@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "WEB-INF/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mkh.todo.api.mapper.WorkInfoMapper">
+    
+    <!-- 일과 상세 -->
+    <select id="getWorkInfo" resultType="com.mkh.todo.api.vo.WorkInfoVO">
+        SELECT 
+            WORK_INFO_SEQ as workInfoSeq,
+            USER_SEQ as userSeq,
+            WORK_INFO as workInfo,
+            MOD_DT as modDt,
+            MOD_ID as modId,
+            REG_DT as regDt,
+            REG_ID as regId 
+        FROM WORK_INFO
+        limit 1
+    </select>
+    
+<!--    <update id="setWorkInfo" parameterType="com.mkh.todo.api.vo.WorkInfoVO" resultType="int">-->
+<!--        update WORK_INFO-->
+<!--        set MOD_DT = now(),-->
+<!--            USER_SEQ = #{userSeq},-->
+<!--            WORK_INFO = #{workInfo},-->
+<!--            MOD_ID = {modId}-->
+<!--        where WORK_INFO_SEQ = #{workInfoSeq}-->
+<!--    </update>-->
+<!--    -->
+<!--    <insert id="addWorkInfo"  parameterType="com.mkh.todo.api.vo.WorkInfoVO" resultType="int">-->
+<!--        insert into WORK_INFO (USER_SEQ, WORK_INFO, REG_DT, REG_ID )-->
+<!--        value (#{userSeq}, #{workInfo}, now(), #{reg_id})-->
+<!--    </insert>-->
+</mapper>
