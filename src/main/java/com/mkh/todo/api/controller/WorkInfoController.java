@@ -22,4 +22,7 @@ public class WorkInfoController {
         WorkInfoVO param = new WorkInfoVO();
         return workInfoService.getWorkInfo(param);
     }
+
+//    setWorkInfo
+
 }
