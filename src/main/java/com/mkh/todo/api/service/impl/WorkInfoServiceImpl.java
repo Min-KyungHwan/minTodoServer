@@ -21,7 +21,12 @@ public class WorkInfoServiceImpl implements WorkInfoService {
     @Override
     public WorkInfoVO getWorkInfo(WorkInfoVO param) throws  Exception {
         WorkInfoVO resultVO = workInfoMapper.getWorkInfo(param);
-//        String result = resultVo.getWorkInfo();
         return resultVO;
+    }
+    
+    @Override
+    public int setWorkInfo(WorkInfoVO param) {
+        int cnt = workInfoMapper.setWorkInfo(param);
+        return cnt;
     }
 }

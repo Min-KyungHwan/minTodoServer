@@ -20,9 +20,9 @@
     <update id="setWorkInfo" parameterType="com.mkh.todo.api.vo.WorkInfoVO">
         UPDATE work_info
         SET MOD_DT = now(),
-            USER_SEQ = #{userSeq},
-            WORK_INFO = #{workInfo},
-            MOD_ID = {modId}
+<!--            USER_SEQ = #{userSeq},-->
+            WORK_INFO = #{workInfo}
+<!--            MOD_ID = {modId}-->
         WHERE WORK_INFO_SEQ = #{workInfoSeq}
     </update>
 

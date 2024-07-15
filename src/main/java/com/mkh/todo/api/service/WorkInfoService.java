@@ -8,4 +8,6 @@ import com.mkh.todo.api.vo.WorkInfoVO;
 
 public interface WorkInfoService {
     WorkInfoVO getWorkInfo(WorkInfoVO param) throws Exception;
+    
+    int setWorkInfo(WorkInfoVO param) throws Exception;
 }
