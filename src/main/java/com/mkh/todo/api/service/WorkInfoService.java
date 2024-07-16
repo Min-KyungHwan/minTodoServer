@@ -10,4 +10,6 @@ public interface WorkInfoService {
     WorkInfoVO getWorkInfo(WorkInfoVO param) throws Exception;
     
     int setWorkInfo(WorkInfoVO param) throws Exception;
+
+    int addWorkInfo(WorkInfoVO param) throws Exception;
 }

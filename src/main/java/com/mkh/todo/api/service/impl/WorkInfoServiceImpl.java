@@ -29,4 +29,9 @@ public class WorkInfoServiceImpl implements WorkInfoService {
         int cnt = workInfoMapper.setWorkInfo(param);
         return cnt;
     }
+
+    public int addWorkInfo(WorkInfoVO param) {
+        int cnt = workInfoMapper.addWorkInfo(param);
+        return cnt;
+    }
 }
