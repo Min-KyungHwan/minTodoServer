@@ -30,6 +30,6 @@
     <!-- 일과 등록 -->
     <insert id="addWorkInfo"  parameterType="com.mkh.todo.api.vo.WorkInfoVO">
         INSERT INTO work_info (USER_SEQ, WORK_INFO, REG_DT, REG_ID )
-        VALUE (#{userSeq}, #{workInfo}, now(), #{reg_id})
+        VALUE (#{userSeq}, #{workInfo}, now(), #{regId})
     </insert>
 </mapper>

@@ -38,10 +38,11 @@ public class WorkInfoController {
         }
     }
 
-    @RequestMapping(value="addWorkInfo", consumes = "application/json"., produces = "application/json", method= RequestMethod.POST)
+    @RequestMapping(value="addWorkInfo", consumes = "application/json", produces = "application/json", method= RequestMethod.POST)
     public ResponseEntity<String> addWorkInfo(@RequestBody WorkInfoVO workInfoVO) {
         try {
             workInfoService.addWorkInfo(workInfoVO);
+            return new ResponseEntity<>("Work info add successfully", HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to add wirk info", HttpStatus.INTERNAL_SERVER_ERROR);
         }
