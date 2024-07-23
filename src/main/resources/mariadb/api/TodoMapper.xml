@@ -1,0 +1,46 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "WEB-INF/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mkh.todo.api.mapper.TodoMapper">
+
+    <!-- 할일 상세 -->
+    <select id="getTodo" resultType="com.mkh.todo.api.vo.TodoVO">
+        SELECT
+        WORK_TODO_SEQ as workTodoSeq,
+        USER_SEQ as userSeq,
+        SORT_NO as sortNo,
+        TODO_NM as todoNm,
+        STATUS as status,
+        MOD_DT as modDt,
+        MOD_ID as modId,
+        REG_DT as regDt,
+        REG_ID as regId
+        FROM work_todo
+        WHERE 1=1
+    </select>
+
+    <!-- 할일 수정 -->
+    <update id="setTodo" parameterType="com.mkh.todo.api.vo.TodoVO">
+        UPDATE work_todo
+        SET MOD_DT = now(),
+        USER_SEQ = #{userSeq},
+        SORT_NO = #{sortNo},
+        TODO_NM = #{todoNm},
+        STATUS = #{status},
+        MOD_ID = #{modId}
+        WHERE WORK_INFO_SEQ = #{workinfoseq}
+    </update>
+
+    <!-- 할일 등록 -->
+    <insert id="addTodo" parameterType="com.mkh.todo.api.vo.TodoVO">
+        INSERT INTO work_todo (
+            WORK_TODO_SEQ, USER_SEQ, SORT_NO, TODO_NM, STATUS, REG_DT, REG_ID
+        )
+        select
+            #{workTodoSeq}, 0, max(SORT_NO) + 1, #{todoNm}, '000', now(), #{regId}
+        from work_todo where 1=1
+    </insert>
+
+    <!-- 할일 삭제 -->
+    <delete id="delTodo" parameterType="com.mkh.todo.api.vo.TodoVO">
+        DELETE FROM work_todo WHERE WORK_TODO_SEQ = #{workTodoSeq}
+    </delete>
+</mapper>
