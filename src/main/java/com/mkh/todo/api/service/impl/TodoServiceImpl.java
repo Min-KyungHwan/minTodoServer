@@ -37,4 +37,10 @@ public class TodoServiceImpl implements TodoService {
         int cnt = todoMapper.delTodo(param);
         return cnt;
     }
+
+    @Override
+    public int setTodo(TodoVO param) {
+        int cnt = todoMapper.setTodo(param);
+        return cnt;
+    }
 }

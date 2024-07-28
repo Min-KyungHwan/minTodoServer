@@ -20,13 +20,21 @@
     <!-- 할일 수정 -->
     <update id="setTodo" parameterType="com.mkh.todo.api.vo.TodoVO">
         UPDATE work_todo
-        SET MOD_DT = now(),
-        USER_SEQ = #{userSeq},
-        SORT_NO = #{sortNo},
-        TODO_NM = #{todoNm},
-        STATUS = #{status},
-        MOD_ID = #{modId}
-        WHERE WORK_INFO_SEQ = #{workinfoseq}
+        SET MOD_DT = now()
+        <if test='userSeq != null and userSeq != ""'>
+        , USER_SEQ = #{userSeq}
+        </if>
+        <if test='sortNo != null and sortNo != ""'>
+        , SORT_NO = #{sortNo}
+        </if>
+        <if test='todoNm != null and todoNm != ""'>
+        , TODO_NM = #{todoNm}
+        </if>
+        , STATUS = #{status}
+        <if test='modId != null and modId != ""'>
+        , MOD_ID = #{modId}
+        </if>
+        WHERE WORK_TODO_SEQ = #{workTodoSeq}
     </update>
 
     <!-- 할일 등록 -->

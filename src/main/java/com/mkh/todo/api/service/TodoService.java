@@ -14,4 +14,6 @@ public interface TodoService {
     int addTodo(TodoVO param) throws Exception;
 
     int delTodo(TodoVO param) throws Exception;
+
+    int setTodo(TodoVO param) throws Exception;
 }

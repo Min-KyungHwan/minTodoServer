@@ -30,6 +30,7 @@ public class WorkInfoServiceImpl implements WorkInfoService {
         return cnt;
     }
 
+    @Override
     public int addWorkInfo(WorkInfoVO param) {
         int cnt = workInfoMapper.addWorkInfo(param);
         return cnt;

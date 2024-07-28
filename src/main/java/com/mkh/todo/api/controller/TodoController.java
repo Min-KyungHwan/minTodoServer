@@ -47,4 +47,14 @@ public class TodoController {
             return new ResponseEntity<>("Failed to del todo", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @RequestMapping(value="/setTodo", consumes = "application/json", produces = "application/json", method= RequestMethod.POST)
+    public ResponseEntity<String> setTodo(@RequestBody TodoVO todoVO) {
+        try {
+            todoService.setTodo(todoVO);
+            return new ResponseEntity<>("Todo set successfully", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Failed to set todo", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

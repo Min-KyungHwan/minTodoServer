@@ -12,7 +12,7 @@ public class TodoVO {
 
     private String todoNm;
 
-    private String status;
+    private Boolean status;
 
     private String modDt;
 
